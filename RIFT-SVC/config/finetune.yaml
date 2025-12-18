@@ -1,0 +1,37 @@
+# model
+# dim-depth
+
+seed: 2025
+
+defaults:
+  - _self_
+  - model: dit-512-8
+
+dataset:
+  data_dir: "data/finetune"
+  meta_info_path: "data/finetune/meta_info.json"
+  max_frame_len: 256
+
+training:
+  optimizer_type: adamwsf
+  learning_rate: 0.0001
+  betas: (0.9, 0.95)
+  weight_decay: 0.01
+  # batch_size_per_gpu: 64
+  batch_size_per_gpu: 8
+  grad_accumulation_steps: 1
+  max_grad_norm: 0
+  max_steps: 10000
+  warmup_ratio: 0.05
+  save_per_steps: 1000
+  test_per_steps: 1000
+  log_media_per_steps: 1000
+  wandb_project: "RIFT-SVC-FT"
+  run_name: "finetune_dit-512-8_steps${training.max_steps}-lr${training.learning_rate}" 
+  save_weights_only: true
+  num_workers: 8
+  eval_sample_steps: 32
+  drop_spk_prob: 0.0
+  time_schedule: "lognorm"
+  # Logger options
+  logger: "tensorboard"  # Options: "wandb" or "tensorboard"

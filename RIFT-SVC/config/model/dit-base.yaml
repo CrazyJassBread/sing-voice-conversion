@@ -1,0 +1,4 @@
+n_mel_channels: 128
+head_dim: 64
+ff_mult: 4
+kernel_size: 31

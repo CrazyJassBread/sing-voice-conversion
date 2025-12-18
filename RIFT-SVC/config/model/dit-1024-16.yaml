@@ -1,0 +1,6 @@
+defaults:
+  - _self_
+  - dit-base
+
+dim: 1024
+depth: 16
