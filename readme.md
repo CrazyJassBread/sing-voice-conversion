@@ -57,6 +57,32 @@ python main_diff.py -i <input.wav> -diff <diff_ckpt.pt> -o <output.wav> -k <keyc
 - `<method>` 有ddim, pndm, dpm-solver和unipc四种方法可供选择
 - `<kstep>` kstep 为浅扩散步数，合理的范围为100~300
 
+## RIFT-SVC
+代码来自[RIFT-SVC](https://github.com/Pur1zumu/RIFT-SVC#)
+配置按照 [README](https://github.com/Pur1zumu/RIFT-SVC/blob/master/README.md) 中提示的步骤进行即可
+
+配置好运行环境后，需要先下载用于微调的预训练权重
+```bash
+wget https://huggingface.co/Pur1zumu/RIFT-SVC-pretrained/resolve/main/pretrain-v3_dit-768-12.ckpt -O pretrained/pretrain-v3_dit-768-12.ckpt
+```
+
+将转换目标人物的声音文件放入 data/finetune 文件夹中，先进行重采样，再进行 f0, mel, cvec 等特征的提取，进行模型的微调
+
+微调完成后，直接让模型加载参数权重即可运行。这里是基于哈基米声音微调的😍[模型权重](https://box.nju.edu.cn/library/57c9a3fb-924d-480d-b875-889b5f68f362/RIFT-SVC%20hakimi/)，可以直接下载运行。
+
+```bash
+python infer.py \
+--model ckpts/finetune_ckpt-v3_dit-768-12_30000steps-lr0.00005/model-step=30000.ckpt \
+--input input.wav \
+--output output.wav \
+--speaker speaker1 \
+--key-shift 0 \
+--infer-steps 32 \
+--batch-size 1
+```
+
+我们尝试将歌曲《爱错》等通过上面的模型方法转换成哈基米音乐，发现效果不错。
+
 ## utils
 划分训练音频 or 实现转化后的 vocal 与 instruments 融合
 ```
