@@ -1,7 +1,11 @@
 # Sing Voice Conversion
 语音技术课程项目
 
-一共分成了三个部分，分别是**accom_separation** **seed-vc/DDSP-SVC** **utils**
+一共分成了三个部分，
+
+- 歌曲预处理（人声伴奏分离）：**accom_separation**
+- Sing Voice Conversion：**seed-vc DDSP-SVC**
+- 有用的工具函数：**utils**
 
 ## accom_separation
 
