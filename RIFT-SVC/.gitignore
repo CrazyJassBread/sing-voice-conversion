@@ -6,6 +6,7 @@ ckpts/*
 mels/*
 lightning_logs/*
 logs/*
+data/*
 
 .vscode/*
 .cache/*
@@ -16,7 +17,7 @@ pretrained/README.md
 !data/README.md
 !.gitkeep
 
-# *.wav
+*.wav
 *.mp3
 *.flac
 *.csv
