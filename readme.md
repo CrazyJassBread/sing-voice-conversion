@@ -33,7 +33,7 @@ python app_svc.py --checkpoint <path-to-checkpoint> --config <path-to-config> --
 
 ## DDSP-SVC
 
-代码来自[seed vc](https://github.com/yxlllc/DDSP-SVC)
+代码来自[DDSP-SVC](https://github.com/yxlllc/DDSP-SVC)
 配置的详细内容参考[cn_README](https://github.com/yxlllc/DDSP-SVC/blob/master/cn_README.md)
 
 同样是微调的哈吉米模型😊[model](https://box.nju.edu.cn/d/8ec999f01dd74365b00a/)
