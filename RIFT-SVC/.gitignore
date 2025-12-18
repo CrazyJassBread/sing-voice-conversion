@@ -1,6 +1,5 @@
 __pycache__/
 pretrained/*
-data/*
 wandb/*
 outputs/*
 ckpts/*
@@ -17,7 +16,7 @@ pretrained/README.md
 !data/README.md
 !.gitkeep
 
-*.wav
+# *.wav
 *.mp3
 *.flac
 *.csv

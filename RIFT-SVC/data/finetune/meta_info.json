@@ -1,0 +1,301 @@
+{
+    "speakers": [
+        "hakimi"
+    ],
+    "train_audios": [
+        {
+            "speaker": "hakimi",
+            "file_name": "new-0"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-1"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-10"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-12"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-13"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-14"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-15"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-16"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-17"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-18"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-2"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-22"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-23"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-25"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-26"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-27"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-28"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-29"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-3"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-30"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-31"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-32"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-33"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-35"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-36"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-38"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-39"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-4"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-41"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-42"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-43"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-44"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-45"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-46"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-47"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-48"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-49"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-5"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-50"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-51"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-52"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-53"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-54"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-55"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-56"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-57"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-58"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-59"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-6"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-60"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-61"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-62"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-63"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-64"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-65"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-66"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-67"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-68"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-69"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-7"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-70"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-71"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-72"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-8"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-9"
+        }
+    ],
+    "test_audios": [
+        {
+            "speaker": "hakimi",
+            "file_name": "new-21"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-11"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-40"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-37"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-34"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-24"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-20"
+        },
+        {
+            "speaker": "hakimi",
+            "file_name": "new-19"
+        }
+    ]
+}
