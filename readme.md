@@ -50,7 +50,7 @@ cd DDSP-SVC
 python main_diff.py -i <input.wav> -diff <diff_ckpt.pt> -o <output.wav> -k <keychange (semitones)> -id <speaker_id> -speedup <speedup> -method <method> -kstep <kstep>
 ```
 - `<input.wav>` 修改为歌曲的路径
-- `<diff_ckpt.pt>` 修改为声码器的路径(以NSF-HIFIGAN声码器为例，默认路径为pretrain/nsf_hifigan/model)
+- `<diff_ckpt.pt>` 修改为模型所在的路径expdir
 - `<output.wav>` 修改为保存转换后的歌曲的路径
 - `<keychange (semitones)>` 用于调节音频的音高，正常设为0
 - `<speaker_id>` 歌手的id，填一个整数即可
