@@ -1,0 +1,10 @@
+YingMusic-SVC/outputs
+YingMusic-SVC/runs
+YingMusic-SVC/checkpoints
+
+*.pth
+*.pt
+*.ckpt
+*.wav
+*.mp3
+*__pycache__/
