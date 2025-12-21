@@ -150,7 +150,7 @@ def step1_separate(source_audio):
         # mp3_inst = convert_to_mp3(final_inst)
         
         return final_vocal, final_inst
-        # return gr.Audio(value=final_vocal), gr.Audio(value=final_inst)
+        return gr.Audio(value=final_vocal), gr.Audio(value=final_inst)
         
 
     
@@ -217,7 +217,7 @@ def step2_convert(vocal_audio, ref_audio):
         
         print(f">>> 转换成功: {final_path}")
         return final_path
-        # return gr.Audio(value=final_path)
+        return gr.Audio(value=final_path)
         
     except subprocess.CalledProcessError as e:
         print(f"转换错误详情: {e.stderr.decode('utf-8') if e.stderr else '无'}")
@@ -246,11 +246,117 @@ def step3_mix(converted_vocal, original_inst):
         ], check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         
         return final_path
-        # return gr.Audio(value=final_path)
+        return gr.Audio(value=final_path)
         
     except subprocess.CalledProcessError as e:
         raise gr.Error(f"混音失败: {e}")
 
+# def run_full_pipeline(source_audio, ref_audio, progress=gr.Progress()):
+#     """
+#     一键执行全流程 (累加式 Yield，解决进度条遮挡问题)
+#     """
+#     if not source_audio:
+#         raise gr.Error("❌ 请先上传原歌曲！")
+#     if not ref_audio:
+#         raise gr.Error("❌ 请先上传目标音色！")
+
+#     print(">>> 🚀 启动一键全流程处理...")
+
+#     # 初始化变量 (全部为空)
+#     # 这样我们可以清楚地知道当前有哪些文件是做好的
+#     p_vocal, p_inst, p_conv, p_final = None, None, None, None
+
+#     # ==========================
+#     # 阶段 1：分离 (Step 1)
+#     # ==========================
+#     progress(0.1, desc="[1/3] 正在分离人声与伴奏...")
+    
+#     # 运行 Step 1，拿到路径字符串
+#     p_vocal, p_inst = step1_separate(source_audio)
+
+#     # 【第一次刷新】
+#     # 此时我们有了 Step 1 的结果，赶紧发出去让用户看见
+#     # 格式：[Step1人声, Step1伴奏, Step2(空), Step3(空)]
+#     yield p_vocal, p_inst, p_conv, p_final
+
+
+#     # ==========================
+#     # 阶段 2：转换 (Step 2)
+#     # ==========================
+#     progress(0.5, desc="[2/3] 正在进行歌声转换...")
+    
+#     # 运行 Step 2，拿到路径字符串
+#     p_conv = step2_convert(p_vocal, ref_audio)
+
+#     # 【第二次刷新】
+#     # 重点来了！！必须把 p_vocal 和 p_inst 再传一遍！
+#     # 否则 Gradio 以为你要清空它们，又会变成加载条。
+#     # 格式：[Step1(旧), Step1(旧), Step2(新), Step3(空)]
+#     yield p_vocal, p_inst, p_conv, p_final
+
+
+#     # ==========================
+#     # 阶段 3：混音 (Step 3)
+#     # ==========================
+#     progress(0.9, desc="[3/3] 正在合成最终音频...")
+    
+#     # 运行 Step 3
+#     p_final = step3_mix(p_conv, p_inst)
+
+#     print(">>> ✅ 全流程执行完毕！")
+
+#     # 【最后刷新】
+#     # 所有变量都有值了，全部展示
+#     yield p_vocal, p_inst, p_conv, p_final
+# def run_full_pipeline(source_audio, ref_audio, progress=gr.Progress()):
+#     """
+#     一键执行全流程 (极速刷新版：直接 Yield 路径字符串)
+#     """
+#     if not source_audio:
+#         raise gr.Error("❌ 请先上传原歌曲！")
+#     if not ref_audio:
+#         raise gr.Error("❌ 请先上传目标音色！")
+
+#     print(">>> 🚀 启动一键全流程处理...")
+
+#     # ==========================
+#     # 阶段 1：分离 (Step 1)
+#     # ==========================
+#     progress(0.1, desc="[1/3] Separating ...")
+    
+#     # 获取路径字符串
+#     path_vocal, path_inst = step1_separate(source_audio)
+
+#     # 【第一次刷新】
+#     # 立即把 Step 1 的路径发给界面。Step 2, 3 还没做，给 None。
+#     yield path_vocal, path_inst, None, None
+
+
+#     # ==========================
+#     # 阶段 2：转换 (Step 2)
+#     # ==========================
+#     progress(0.5, desc="[2/3] Converting ...")
+    
+#     # 传入路径字符串
+#     path_conv = step2_convert(path_vocal, ref_audio)
+
+#     # 【第二次刷新】
+#     # 重发 Step 1 的路径 (确保它不消失)，发 Step 2 的新路径。Step 3 给 None。
+#     yield path_vocal, path_inst, path_conv, None
+
+
+#     # ==========================
+#     # 阶段 3：混音 (Step 3)
+#     # ==========================
+#     progress(0.9, desc="[3/3] Mixing ...")
+    
+#     path_final = step3_mix(path_conv, path_inst)
+
+#     print(">>> ✅ 全流程执行完毕！")
+
+#     # 【最后刷新】
+#     # 全部都有了
+#     yield path_vocal, path_inst, path_conv, path_final
 # ==========================================
 # ### 🖥️ 界面构建 (分步式布局)
 # ==========================================
@@ -355,9 +461,15 @@ with gr.Blocks(title="SVC Project Demo", theme=gr.themes.Soft(), css=simple_css)
                 value=DEFAULT_REF_PATH   # <--- 绑定默认参考音色
             )
             
+            
+            
+            gr.Markdown("---")
+            gr.Markdown("**🚀 快捷操作**")
+            btn_run_all = gr.Button("⚡ 一键执行全流程 Run All", variant="primary", scale=2)
+            gr.Markdown("(点击后将自动按顺序执行 Step 1, 2, 3)")
+            
             gr.Markdown("---")
             gr.Markdown("**说明：**\n左侧准备好后，请按顺序点击右侧的按钮。")
-
         # --- 右侧：加工流水线 ---
         with gr.Column(scale=2):
             gr.Markdown("## ⚙️ 2. 工作流程 (Processing Pipeline)")
@@ -405,6 +517,30 @@ with gr.Blocks(title="SVC Project Demo", theme=gr.themes.Soft(), css=simple_css)
     
     # 点击 Step 3 按钮 -> 读取 Step 2 的 Converted Vocal 和 Step 1 的 Inst -> 输出 Final
     btn_step3.click(
+        fn=step3_mix,
+        inputs=[out_converted, out_inst],
+        outputs=[out_final]
+    )
+    
+    # btn_run_all.click(
+    #     fn=run_full_pipeline,
+    #     inputs=[src_input, ref_input],
+    #     outputs=[
+    #         out_vocal,      # 对应 res_vocal_obj
+    #         out_inst,       # 对应 res_inst_obj
+    #         out_converted,  # 对应 res_conv_obj
+    #         out_final       # 对应 res_final_obj
+    #     ]
+    # )
+    btn_run_all.click(
+        fn=step1_separate,           # 1. 先跑分离
+        inputs=[src_input],
+        outputs=[out_vocal, out_inst]
+    ).then(                          # 2. 分离成功后，接着跑转换
+        fn=step2_convert,
+        inputs=[out_vocal, ref_input], # 注意：这里直接读取上一步的输出组件作为输入
+        outputs=[out_converted]
+    ).then(                          # 3. 转换成功后，接着跑混音
         fn=step3_mix,
         inputs=[out_converted, out_inst],
         outputs=[out_final]
